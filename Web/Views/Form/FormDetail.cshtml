@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Form Detay Sayfası";
+}
+
+@section scripts{
+    <script src="~/js/pages/form.js"></script>
+}
+@section css{
+
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <span>Form Detay</span>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <form id="formdetail">
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+                                <span>Form İsmi:</span>
+                            </label>
+                            <input id="formName" type="text" class="form-control form-control-solid" value="Yeni Form" disabled>
+                        </div>
+                    </div>
+
+                    <div id="savedetailButton" class="row">
+                        <div>
+                            <div>
+                                <button type="button" class="btn btn-secondary" id="savedetail">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>

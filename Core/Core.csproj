@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Models\Form\" />
-    <Folder Include="Entities\" />
   </ItemGroup>
 
   <ItemGroup>

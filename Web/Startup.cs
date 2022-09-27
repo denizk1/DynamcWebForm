@@ -1,9 +1,14 @@
+using Core.Models;
+using DataAccess.Abstract;
+using DataAccess.Concrate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services.Abstract;
+using Services.Concrate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +28,18 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AppSettings>(Configuration.GetSection("Config"));
+            AppSettings.FormConnectionString = Configuration.GetValue<string>($"ConnectionStrings:FormContext");
+
             services.AddSession();
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
+
+            services.AddScoped<IFormTypeRepository, FormTypeRepository>();
+            services.AddScoped<IFormTypeService, FormTypeService>();
+
+            services.AddScoped<IFormInfoRepository, FormInfoRepository>();
+            services.AddScoped<IFormInfoService, FormInfoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

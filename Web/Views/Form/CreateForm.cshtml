@@ -1,4 +1,92 @@
 ﻿@{
     ViewData["Title"] = "Web Form Oluşturma";
 }
+@section scripts{
+    <script src="~/js/pages/createForm.js"></script>
 
+}
+@section css{
+    <style>
+        .hovers:hover {
+            color: gray;
+            cursor: pointer;
+        }
+
+        .hovers {
+            color: black;
+        }
+    </style>
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <span>Web Form Oluştur</span>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <table id="FormComponents" class="display" cellpadding="4" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Form Componentler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a class="hovers" id="1" onclick="addComponent(this.id);"><i class="bi bi-code-square"></i> TextBox</a></td>
+                        </tr>
+                        <tr>
+                            <td><a class="hovers" id="2" onclick="addComponent(this.id);"><i class="bi bi-code-square"></i> Label</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <form id="formbyComponents">
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+                                <span>Form İsmi:</span>
+                            </label>
+                            <input id="formName" type="text" class="form-control form-control-solid" value="Yeni Form" disabled>
+                        </div>
+                    </div>
+
+                    <div id="saveButton" class="row">
+                        <div>
+                            <div>
+                                <button type="button" class="btn btn-secondary" id="save">Form Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>
+
+
+<div class="modal fade" id="changeComponentNameModal" role="dialog" data-refresh="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <form id="changeformid">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changeComponentNameModalLabel">Label İsim Değiştirme</h5>
+                    <button type="button" onclick="CloseModal('changeComponentNameModal');" class="close" data-dismiss="modal" aria-label="Kapat">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="nameValue">Değişecek Metin: </label>
+                    <input type="text" id="nameValue" name="nameValue" class="form-control form-control-solid" />
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-primary" id="nameChange">Değiştir</button>
+                    <button type="button" onclick="CloseModal('changeComponentNameModal');" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                </div>
+            </form>       
+        </div>
+    </div>
+</div>

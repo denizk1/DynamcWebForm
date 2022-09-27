@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Form Listesi";
 }
-
+@using Core.Entities.Form;
+@model List<FormInfo>;
 @section scripts{
     <script src="~/js/pages/form.js"></script>
 }
@@ -40,8 +41,6 @@
                     </span> Ekle
                 </button>
             </div>
-
-
         </div>
     </div>
     <div class="card-body">
@@ -53,6 +52,20 @@
                 </tr>
             </thead>
             <tbody>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.FormName
+                            </td>
+                            <td>
+                                <a class='btn btn-success btn-xs' data-toggle='tooltip' title='Detay Göster' onclick="detail(@item.jsonformat);"><i class='fa fa-info'></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+
             </tbody>
         </table>
     </div>
