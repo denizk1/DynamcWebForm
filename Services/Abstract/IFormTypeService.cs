@@ -11,5 +11,6 @@ namespace Services.Abstract
     public interface IFormTypeService
     {
         BaseResponse<FormType> GetById(int Id);
+        BaseResponse<List<FormType>> GetAll();
     }
 }

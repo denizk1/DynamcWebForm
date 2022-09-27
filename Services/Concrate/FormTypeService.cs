@@ -24,5 +24,12 @@ namespace Services.Concrate
             return new BaseResponse<FormType>(true, result.Data, "");
         }
 
+        public BaseResponse<List<FormType>> GetAll()
+        {
+            var result = _formTypeRepository.GetAll().Data;
+
+            return new BaseResponse<List<FormType>>(true, result, "");
+        }
+
     }
 }

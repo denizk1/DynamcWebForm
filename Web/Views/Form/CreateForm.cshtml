@@ -5,6 +5,8 @@
     <script src="~/js/pages/createForm.js"></script>
 
 }
+@using Core.Entities.Form 
+@model List<FormType>
 @section css{
     <style>
         .hovers:hover {
@@ -32,14 +34,23 @@
                             <th>Form Componentler</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    @*<tbody>
                         <tr>
                             <td><a class="hovers" id="1" onclick="addComponent(this.id);"><i class="bi bi-code-square"></i> TextBox</a></td>
                         </tr>
                         <tr>
                             <td><a class="hovers" id="2" onclick="addComponent(this.id);"><i class="bi bi-code-square"></i> Label</a></td>
                         </tr>
-                    </tbody>
+                    </tbody>*@
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><a class="hovers" id="@item.Id" onclick="addComponent(this.id);"><i class="bi bi-code-square"></i> @item.Type</a></td>
+                        </tr>
+                    }
+
+                </tbody>
                 </table>
             </div>
             <div class="col-6">

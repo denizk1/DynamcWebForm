@@ -36,7 +36,8 @@ namespace Web.Controllers
         }
         public IActionResult CreateForm(int Id)
         {
-            return View();
+            List<FormType> types = _formTypeService.GetAll().Data;        
+            return View(types);
         }
         public JsonResult AddForm(int Id)
         {
